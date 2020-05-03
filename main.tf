@@ -10,7 +10,6 @@ provider "azurerm" {
 }
 
 variable "resource_group_name" { 
-  default = "tailspin-space-game-rg"
   description = "The name of the resource group"
 }
 
@@ -34,8 +33,8 @@ resource "random_integer" "app_service_name_suffix" {
 }
 
 resource "azurerm_resource_group" "spacegame" {
-  name     = "var.resource_group_name"
-  location = "var.resource_group_location"
+  name     = "${var.resource_group_name}"
+  location = "${var.resource_group_location}"
 }
 
 resource "azurerm_app_service_plan" "spacegame" {
